@@ -28,7 +28,7 @@ public class ProgramareService {
             throw new IllegalArgumentException("Nu se poate crea programare in trecut");
         }
 
-        // regula simpla: un medic nu poate avea mai mult de 10 programari intr-o zi
+        // un medic nu poate avea mai mult de 10 programari pe zi
         LocalDate zi = dataOra.toLocalDate();
         LocalDateTime start = LocalDateTime.of(zi, LocalTime.MIN);
         LocalDateTime end = LocalDateTime.of(zi, LocalTime.MAX);
