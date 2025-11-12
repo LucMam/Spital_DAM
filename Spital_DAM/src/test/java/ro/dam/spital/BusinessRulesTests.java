@@ -49,12 +49,10 @@ public class BusinessRulesTests {
     void testPacientNuPoateAveaPeste20Documente() {
         Pacient p = pacientRepo.save(new Pacient("Pacient Documente", LocalDate.of(1980,1,1), Sex.FEMININ));
 
-        // 20 documente valide
         for (int i = 1; i <= 20; i++) {
             documentService.salveazaDocument(p, new DocumentMedical("Doc #" + i, LocalDate.now()));
         }
 
-        // A 21-a trebuie să dea eroare
         assertThrows(IllegalStateException.class,
                 () -> documentService.salveazaDocument(p, new DocumentMedical("Doc depășit", LocalDate.now())));
     }
