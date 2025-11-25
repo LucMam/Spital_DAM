@@ -1,5 +1,7 @@
 package ro.dam.spital.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Pacient {
 
     @Id
@@ -24,9 +27,11 @@ public class Pacient {
     private Sex sex;
 
     @OneToMany(mappedBy = "pacient", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<DocumentMedical> documente = new ArrayList<>();
 
     @OneToMany(mappedBy = "pacient", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Programare> programari = new ArrayList<>();
 
     public Pacient() {}

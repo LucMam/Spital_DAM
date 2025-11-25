@@ -1,10 +1,13 @@
 package ro.dam.spital.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class DocumentMedical {
 
     @Id
@@ -18,6 +21,7 @@ public class DocumentMedical {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pacient_id")
+    @JsonIgnore
     private Pacient pacient;
 
     public DocumentMedical() {}

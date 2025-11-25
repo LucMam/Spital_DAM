@@ -1,11 +1,15 @@
 package ro.dam.spital.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Medic {
 
     @Id
@@ -19,12 +23,14 @@ public class Medic {
     private String specializare;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
     @JoinColumn(name = "sectie_id")
     private Sectie sectie;
 
 
 
     @OneToMany(mappedBy = "medic", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Programare> programari = new ArrayList<>();
 
     public Medic() {}

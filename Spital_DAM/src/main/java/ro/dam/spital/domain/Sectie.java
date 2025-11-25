@@ -1,11 +1,15 @@
 package ro.dam.spital.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Sectie {
 
     @Id
@@ -16,6 +20,7 @@ public class Sectie {
     private String nume;
 
     @OneToMany(mappedBy = "sectie", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<Medic> medici = new ArrayList<>();
 
     public Sectie() {}
