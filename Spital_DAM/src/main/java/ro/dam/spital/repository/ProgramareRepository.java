@@ -23,7 +23,7 @@ public interface ProgramareRepository extends JpaRepository<Programare, Long> {
         AND (:medicId IS NULL OR p.medic.id = :medicId)
         AND (:sectieId IS NULL OR p.medic.sectie.id = :sectieId)
         """)
-    List<Programare> cautaFaraData(
+    List<Programare> cauta(
             @Param("pacientId") Long pacientId,
             @Param("medicId") Long medicId,
             @Param("sectieId") Long sectieId

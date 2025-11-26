@@ -117,7 +117,7 @@ public class ProgramareService {
         final LocalDateTime fd1 = d1;
         final LocalDateTime fd2 = d2;
 
-        List<Programare> lista = programareRepository.cautaFaraData(
+        List<Programare> lista = programareRepository.cauta(
                 pacientId, medicId, sectieId
         );
 
