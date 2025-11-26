@@ -35,7 +35,7 @@ public class ProgramareController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // create - body minimal
+
     @PostMapping
     public ResponseEntity<?> create(@RequestBody CreateProgramareRequest req) {
         try {
@@ -51,7 +51,7 @@ public class ProgramareController {
         }
     }
 
-    // update
+
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody UpdateProgramareRequest req) {
         try {
@@ -68,7 +68,7 @@ public class ProgramareController {
         }
     }
 
-    // delete
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
@@ -79,14 +79,14 @@ public class ProgramareController {
         }
     }
 
-    // --- DTO-uri interne ---
+
     public static class CreateProgramareRequest {
         private Long pacientId;
         private Long medicId;
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
         private LocalDateTime dataOra;
         private String scop;
-        // getters/setters
+
         public Long getPacientId() { return pacientId; }
         public void setPacientId(Long pacientId) { this.pacientId = pacientId; }
         public Long getMedicId() { return medicId; }
@@ -103,7 +103,7 @@ public class ProgramareController {
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
         private LocalDateTime dataOra;
         private String scop;
-        // getters/setters
+
         public Long getPacientId() { return pacientId; }
         public void setPacientId(Long pacientId) { this.pacientId = pacientId; }
         public Long getMedicId() { return medicId; }

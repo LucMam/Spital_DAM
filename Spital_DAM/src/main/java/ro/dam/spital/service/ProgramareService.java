@@ -30,9 +30,7 @@ public class ProgramareService {
         this.medicRepository = medicRepository;
     }
 
-    // -------------------------------------------------------
-    // 1) CREATE by Entities (folosit în WorkflowService)
-    // -------------------------------------------------------
+
     public Programare creeazaProgramare(Pacient pacient, Medic medic, LocalDateTime dataOra, String scop) {
 
         if (dataOra.isBefore(LocalDateTime.now())) {
@@ -61,9 +59,7 @@ public class ProgramareService {
         return programareRepository.save(p);
     }
 
-    // -------------------------------------------------------
-    // 2) CREATE by IDs (folosit în ProgramareController)
-    // -------------------------------------------------------
+
     public Programare creeazaProgramareByIds(Long pacientId, Long medicId, LocalDateTime dataOra, String scop) {
 
         Pacient pacient = pacientRepository.findById(pacientId)
@@ -75,9 +71,7 @@ public class ProgramareService {
         return creeazaProgramare(pacient, medic, dataOra, scop);
     }
 
-    // -------------------------------------------------------
-    // 3) UPDATE
-    // -------------------------------------------------------
+
     public Programare updateProgramare(Long id, Long pacientId, Long medicId,
                                        LocalDateTime dataOra, String scop) {
 
@@ -102,9 +96,7 @@ public class ProgramareService {
         return programareRepository.save(programare);
     }
 
-    // -------------------------------------------------------
-    // 4) DELETE
-    // -------------------------------------------------------
+
     public void deleteProgramare(Long id) {
         if (!programareRepository.existsById(id)) {
             throw new IllegalArgumentException("Programare inexistentă.");
@@ -112,9 +104,7 @@ public class ProgramareService {
         programareRepository.deleteById(id);
     }
 
-    // -------------------------------------------------------
-    // 5) CAUTARE GENERALĂ
-    // -------------------------------------------------------
+
     public List<Programare> cautaProgramari(Long pacientId,
                                             Long medicId,
                                             Long sectieId,
