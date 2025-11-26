@@ -26,7 +26,7 @@ public class SpitalDamApplication {
         try (Connection conn = DriverManager.getConnection(
                 "jdbc:postgresql://localhost:5432/Spital",
                 "postgres",
-                "postgres"   // ← pune aici parola ta reală!
+                "postgres"
         )) {
             Statement stmt = conn.createStatement();
 
