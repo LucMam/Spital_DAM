@@ -15,7 +15,7 @@ public interface ProgramareRepository extends JpaRepository<Programare, Long> {
 
     List<Programare> findByDataOraBetween(LocalDateTime start, LocalDateTime end);
 
-    List<Programare> findByMedicId(Long medicId);
+
 
     @Query("""
         SELECT p FROM Programare p
