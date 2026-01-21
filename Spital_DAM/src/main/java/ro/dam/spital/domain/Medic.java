@@ -23,9 +23,10 @@ public class Medic {
     private String specializare;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonManagedReference
     @JoinColumn(name = "sectie_id")
+    @JsonIgnoreProperties("medici")
     private Sectie sectie;
+
 
 
 
@@ -58,4 +59,6 @@ public class Medic {
         programari.remove(p);
         p.setMedic(null);
     }
+
+
 }

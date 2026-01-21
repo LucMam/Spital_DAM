@@ -20,8 +20,9 @@ public class Sectie {
     private String nume;
 
     @OneToMany(mappedBy = "sectie", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonBackReference
+    @JsonIgnoreProperties("sectie")
     private List<Medic> medici = new ArrayList<>();
+
 
     public Sectie() {}
 
